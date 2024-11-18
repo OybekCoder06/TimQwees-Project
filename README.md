@@ -1,2 +1,1 @@
-# TimQwees-Project
-Готовый сайт
+# https://timqweess-technology.netlify.app
