@@ -73,19 +73,42 @@ list_menu.forEach((menu, index) => { // забираем все элементы
     });
 });
 
+// const button = document.querySelector('.btn');
+// const system__visible = document.querySelector('.system-visible');
+// const system__hidden = document.querySelector('.system-hidden');
+// const check__system = document.querySelector('.click__system');
+// const to = document.querySelector('.to');
+// button.addEventListener('click', (e) => {
+//     e.preventDefault();
+//     button.classList.add('btn--clicked');
+//     document.querySelectorAll('span').forEach((element) => { element.classList.add('expanded'); to.classList.remove('to'); to.classList.add('expanded-to') })
+//     setTimeout(() => { button.classList.remove("btn--clicked") }, 3600);
+//     setTimeout(() => { check__system.classList.remove('click__system'); system__visible.classList.remove('system-visible'); system__visible.classList.add('system-hidden'); system__hidden.classList.remove('system-hidden'); system__hidden.classList.add('system-visible'); }, 3450);
+//     setTimeout(() => { document.querySelectorAll('span').forEach((element) => { element.classList.remove('expanded') }) }, 1680);
+//     setTimeout(() => { document.querySelectorAll('span').forEach((element) => { to.classList.add('to'); to.classList.remove('expanded-to') }) }, 3100)
+// });
+
 const button = document.querySelector('.btn');
 const system__visible = document.querySelector('.system-visible');
 const system__hidden = document.querySelector('.system-hidden');
-const check__system = document.querySelector('.click__system');
-const to = document.querySelector('.to');
+
 button.addEventListener('click', (e) => {
     e.preventDefault();
-    button.classList.add('btn--clicked');
-    document.querySelectorAll('span').forEach((element) => { element.classList.add('expanded'); to.classList.remove('to'); to.classList.add('expanded-to') })
-    setTimeout(() => { button.classList.remove("btn--clicked") }, 3600);
-    setTimeout(() => { check__system.classList.remove('click__system'); system__visible.classList.remove('system-visible'); system__visible.classList.add('system-hidden'); system__hidden.classList.remove('system-hidden'); system__hidden.classList.add('system-visible'); }, 3450);
-    setTimeout(() => { document.querySelectorAll('span').forEach((element) => { element.classList.remove('expanded') }) }, 1680);
-    setTimeout(() => { document.querySelectorAll('span').forEach((element) => { to.classList.add('to'); to.classList.remove('expanded-to') }) }, 3100)
+    // Animatsiyani o'chirish va to'g'ridan-to'g'ri sahifaga o'tish
+    system__visible.classList.remove('system-visible');
+    system__visible.classList.add('system-hidden');
+    system__hidden.classList.remove('system-hidden');
+    system__hidden.classList.add('system-visible');
+    system__hidden.classList.add('system-visible');
+    system__visible.classList.add('system-hidden');
+});
+
+const button1 = document.querySelector('.btn'); // Tugmani tanlash
+const systemDiv = document.querySelector('.system-visible'); // Div ni tanlash
+
+button.addEventListener('click', (e) => {
+    e.preventDefault(); // Tugma bosilganda sahifani yangilashni oldini olish
+    systemDiv.remove(); // Div ni o'chirish
 });
 
 // CURSOR SETTIN REQUAER
@@ -94,47 +117,47 @@ console.clear();
 
 const TAIL_LENGTH = 15;
 
-const cursor = document.getElementById('cursor');
+// const cursor = document.getElementById('cursor');
 
-let mouseX = 0;
-let mouseY = 0;
+// let mouseX = 0;
+// let mouseY = 0;
 
-let cursorCircles;
-let cursorHistory = Array(TAIL_LENGTH).fill({ x: 0, y: 0 });
+// let cursorCircles;
+// let cursorHistory = Array(TAIL_LENGTH).fill({ x: 0, y: 0 });
 
-function onMouseMove(event) {
-    mouseX = event.clientX;
-    mouseY = event.clientY;
-}
+// function onMouseMove(event) {
+//     mouseX = event.clientX;
+//     mouseY = event.clientY;
+// }
 
-function initCursor() {
-    for (let i = 0; i < TAIL_LENGTH; i++) {
-        let div = document.createElement('div');
-        div.classList.add('cursor-circle');
-        cursor.append(div);
-    }
-    cursorCircles = Array.from(document.querySelectorAll('.cursor-circle'));
-}
+// function initCursor() {
+//     for (let i = 0; i < TAIL_LENGTH; i++) {
+//         let div = document.createElement('div');
+//         div.classList.add('cursor-circle');
+//         cursor.append(div);
+//     }
+//     cursorCircles = Array.from(document.querySelectorAll('.cursor-circle'));
+// }
 
-function updateCursor() {
-    cursorHistory.shift();
-    cursorHistory.push({ x: mouseX, y: mouseY });
+// function updateCursor() {
+//     cursorHistory.shift();
+//     cursorHistory.push({ x: mouseX, y: mouseY });
 
-    for (let i = 0; i < TAIL_LENGTH; i++) {
-        let current = cursorHistory[i];
-        let next = cursorHistory[i + 1] || cursorHistory[TAIL_LENGTH - 1];
+//     for (let i = 0; i < TAIL_LENGTH; i++) {
+//         let current = cursorHistory[i];
+//         let next = cursorHistory[i + 1] || cursorHistory[TAIL_LENGTH - 1];
 
-        let xDiff = next.x - current.x;
-        let yDiff = next.y - current.y;
+//         let xDiff = next.x - current.x;
+//         let yDiff = next.y - current.y;
 
-        current.x += xDiff * 0.35;
-        current.y += yDiff * 0.35;
-        cursorCircles[i].style.transform = `translate(${current.x}px, ${current.y}px) scale(${i / TAIL_LENGTH})`;
-    }
-    requestAnimationFrame(updateCursor)
-}
+//         current.x += xDiff * 0.35;
+//         current.y += yDiff * 0.35;
+//         cursorCircles[i].style.transform = `translate(${current.x}px, ${current.y}px) scale(${i / TAIL_LENGTH})`;
+//     }
+//     requestAnimationFrame(updateCursor)
+// }
 
-document.addEventListener('mousemove', onMouseMove, false);
+// document.addEventListener('mousemove', onMouseMove, false);
 
-initCursor();
-updateCursor();
+// initCursor();
+// updateCursor();
